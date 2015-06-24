@@ -1,0 +1,32 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+classes/
+
+# Mac
+.DS_Store
+
+# Gradle
+gradleBuild/
+.gradle/
+build/
+
+# swap files
+*.swp
+
+# Java
+*.hprof
+
+ngp.ipr
+
+*.tar.gz
+*.zip
+*.tgz
+*.gz
+*.iso
+*.bin
+
+
+
+
