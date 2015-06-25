@@ -7,6 +7,8 @@ import be.dnsbelgium.rdap.service.impl.DefaultDomainService;
 import be.dnsbelgium.vcard.Contact;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigInteger;
 import java.net.InetAddress;
@@ -21,8 +23,13 @@ public class MyDomainService extends DefaultDomainService {
   protected final DateTime createTime = DateTime.now().toDateTime(DateTimeZone.UTC).minusDays(200);
   protected final DateTime lastChangedTime = createTime.plusDays(100);
 
+    private final static Logger logger = LoggerFactory.getLogger(MyDomainService.class);
+
   @Override
   public Domain getDomainImpl(DomainName domainName) throws RDAPError {
+
+    logger.info("Received query for " + domainName.getStringValue());
+
     String tld = domainName.getTLDLabel().getStringValue();
     if (!tld.equalsIgnoreCase("at")) {
       throw RDAPError.notAuthoritative(domainName);
@@ -51,6 +58,9 @@ public class MyDomainService extends DefaultDomainService {
               anIPNetwork()
       );
       domain.addRdapConformance(Domain.DEFAULT_RDAP_CONFORMANCE);
+
+      logger.info("Sending data for " + domainName.getStringValue());
+
       return domain;
 
     } catch (Exception e) {
