@@ -192,7 +192,7 @@ public class MyDomainService extends DefaultDomainService {
     List<Domain.Variant.Relation> relations2 = new ArrayList<Domain.Variant.Relation>();
     relations2.add(Domain.Variant.Relation.Default.REGISTERED);
     List<Domain.Variant.Name> names2 = new ArrayList<Domain.Variant.Name>();
-    names2.add(new Domain.Variant.Name(DomainName.of("xn--exmple-jta.com"), DomainName.of("exàmple.com")));
+    //names2.add(new Domain.Variant.Name(DomainName.of("xn--exmple-jta.com"), DomainName.of("exàmple.com")));
     List<Domain.Variant> variants = new ArrayList<Domain.Variant>();
     variants.add(new Domain.Variant(relations1, "IdnTable", names1));
     variants.add(new Domain.Variant(relations2, "IdnTable2", names2));
