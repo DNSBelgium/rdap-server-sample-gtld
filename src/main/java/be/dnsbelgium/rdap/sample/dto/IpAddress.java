@@ -1,5 +1,6 @@
 package be.dnsbelgium.rdap.sample.dto;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,19 +27,17 @@ public class IpAddress {
       InetAddress ipAddress = InetAddress.getByName(value);
       return new IpAddress(value, ipAddress instanceof Inet6Address);
     } catch (UnknownHostException e) {
-      // TODO: throw exception or just swallow error and log that line couldn't be parsed?
-      // throw new RuntimeException("Unable to parse IP address '"+ value + "'", e);
-      logger.info("Unable to parse IP address '{}'", value, e);
+      System.out.println("e = " + e);
       return null;
     }
   }
 
-  //  @JsonIgnore
+  @JsonIgnore
   public boolean isIpv4() {
     return ip4 != null;
   }
 
-  //  @JsonIgnore
+  @JsonIgnore
   public boolean isIpv6() {
     return ip6 != null;
   }
