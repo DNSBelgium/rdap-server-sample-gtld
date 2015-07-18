@@ -20,10 +20,9 @@ import java.util.Set;
 
 public class MyDomainService extends DefaultDomainService {
 
+  private final static Logger logger = LoggerFactory.getLogger(MyDomainService.class);
   protected final DateTime createTime = DateTime.now().toDateTime(DateTimeZone.UTC).minusDays(200);
   protected final DateTime lastChangedTime = createTime.plusDays(100);
-
-    private final static Logger logger = LoggerFactory.getLogger(MyDomainService.class);
 
   @Override
   public Domain getDomainImpl(DomainName domainName) throws RDAPError {
@@ -40,22 +39,22 @@ public class MyDomainService extends DefaultDomainService {
 
     try {
       Domain domain = new Domain(
-              someLinks(),
-              someNotices(0),
-              someRemarks(0),
-              "en",
-              someEvents(),
-              someStatuses(),
-              DomainName.of("whois.nic.at"),
-              "Handle",
-              domainName,
-              domainName,
-              someVariants(),
-              someNameservers(),
-              aSecureDNS(),
-              someEntities(),
-              somePublicIds(),
-              anIPNetwork()
+          someLinks(),
+          someNotices(0),
+          someRemarks(0),
+          "en",
+          someEvents(),
+          someStatuses(),
+          DomainName.of("whois.nic.at"),
+          "Handle",
+          domainName,
+          domainName,
+          someVariants(),
+          someNameservers(),
+          aSecureDNS(),
+          someEntities(),
+          somePublicIds(),
+          anIPNetwork()
       );
       domain.addRdapConformance(Domain.DEFAULT_RDAP_CONFORMANCE);
 
@@ -66,13 +65,13 @@ public class MyDomainService extends DefaultDomainService {
     } catch (Exception e) {
 
       e.printStackTrace();
-      throw new InternalServerError();
+      throw new InternalServerError(e.getMessage());
 
     }
   }
 
 
-    protected List<Link> someLinks() throws Exception {
+  protected List<Link> someLinks() throws Exception {
     Set<String> hrefLang = new HashSet<String>();
     hrefLang.add("en");
     //hrefLang.add("de");
@@ -87,18 +86,18 @@ public class MyDomainService extends DefaultDomainService {
 
   protected List<Notice> someNotices(int count) throws Exception {
     List<Notice> notices = new ArrayList<Notice>();
-    for (int i=0; i<count; i++) {
-        notices.add(aNoticeOrRemark());
-        notices.add(aNoticeOrRemark());
+    for (int i = 0; i < count; i++) {
+      notices.add(aNoticeOrRemark());
+      notices.add(aNoticeOrRemark());
     }
     return notices;
   }
 
   protected List<Notice> someRemarks(int count) throws Exception {
     List<Notice> remarks = new ArrayList<Notice>();
-    for (int i=0; i<count; i++) {
-        remarks.add(aNoticeOrRemark());
-        remarks.add(aNoticeOrRemark());
+    for (int i = 0; i < count; i++) {
+      remarks.add(aNoticeOrRemark());
+      remarks.add(aNoticeOrRemark());
     }
     return remarks;
   }
@@ -159,27 +158,27 @@ public class MyDomainService extends DefaultDomainService {
   @SuppressWarnings("UnusedDeclaration")
   protected Contact aContact() {
     return new Contact.Builder()
-            .setFormattedName("Larry Ellison")
-            .setGivenName("Larry")
-            .setFamilyName("Ellison")
-            .setOrganization("Retirees Inc.")
-            .addOU("This is an OU")
-            .addOU("This is another OU")
-            .addStreet("street 1")
-            .addStreet("street 2")
-            .addLocality("New York")
-            .addLocality("Brooklyn")
-            .addRegion("New York")
-            .addRegion("East coast")
-            .addPostalCode("12345")
-            .addCountry("United states of America")
-            .addTelephoneNumber(TelephoneNumber.of(32, BigInteger.valueOf(123456)))
-            .addTelephoneNumber(TelephoneNumber.of("+32.654321"))
-            .addFaxNumber(TelephoneNumber.of(32, BigInteger.valueOf(987654)))
-            .addEmailAddress("larry.ellison@retirees.com")
-            .addEmailAddress("le@former.oracle.com")
-            .setLanguages("en", "de", "es")
-            .build();
+        .setFormattedName("Larry Ellison")
+        .setGivenName("Larry")
+        .setFamilyName("Ellison")
+        .setOrganization("Retirees Inc.")
+        .addOU("This is an OU")
+        .addOU("This is another OU")
+        .addStreet("street 1")
+        .addStreet("street 2")
+        .addLocality("New York")
+        .addLocality("Brooklyn")
+        .addRegion("New York")
+        .addRegion("East coast")
+        .addPostalCode("12345")
+        .addCountry("United states of America")
+        .addTelephoneNumber(TelephoneNumber.of(32, BigInteger.valueOf(123456)))
+        .addTelephoneNumber(TelephoneNumber.of("+32.654321"))
+        .addFaxNumber(TelephoneNumber.of(32, BigInteger.valueOf(987654)))
+        .addEmailAddress("larry.ellison@retirees.com")
+        .addEmailAddress("le@former.oracle.com")
+        .setLanguages("en", "de", "es")
+        .build();
   }
 
   protected List<Domain.Variant> someVariants() {
@@ -215,16 +214,16 @@ public class MyDomainService extends DefaultDomainService {
   protected List<Entity> someEntities() {
     List<Entity> entityList = new ArrayList<Entity>();
     Contact vCard = new Contact.Builder()
-            .addOU("White House")
-            .addStreet("350 Palm Drive")
-            .addPostalCode("DC 14580")
-            .addLocality("Washington")
-            .addRegion("DC")
-            .addTelephoneNumber(TelephoneNumber.of("1.350700"))
-            .addCountry("USA")
-            .addEmailAddress("john.f.kennedy@whitehouse.gov")
-            .setFormattedName("JFK")
-            .build();
+        .addOU("White House")
+        .addStreet("350 Palm Drive")
+        .addPostalCode("DC 14580")
+        .addLocality("Washington")
+        .addRegion("DC")
+        .addTelephoneNumber(TelephoneNumber.of("1.350700"))
+        .addCountry("USA")
+        .addEmailAddress("john.f.kennedy@whitehouse.gov")
+        .setFormattedName("JFK")
+        .build();
     Entity registrant = new Entity(null, null, null, "en", Entity.OBJECT_CLASS_NAME, null, null, null, "REGISTRANT", vCard, someRoles(), null, null);
     entityList.add(registrant);
     return entityList;

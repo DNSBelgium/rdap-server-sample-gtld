@@ -8,29 +8,29 @@ package be.dnsbelgium.rdap.sample.dto;
 public class Contact {
   public String id;
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String name;
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String organization;
 
 
-//  @NotNull
+  //  @NotNull
 //  @Valid
   public Address address = new Address();
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String phone;
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String phoneExt;
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String fax;
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String faxExt;
 
-//  @Length(min = 0, max = 255)
+  //  @Length(min = 0, max = 255)
   public String email;
 }

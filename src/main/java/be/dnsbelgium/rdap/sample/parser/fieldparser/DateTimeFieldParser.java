@@ -15,6 +15,6 @@ public class DateTimeFieldParser implements FieldParser<DateTime> {
 
   @Override
   public DateTime parse(String value) {
-    return (formatter!=null) ? DateTime.parse(value, formatter) : DateTime.parse(value);
+    return (formatter != null) ? DateTime.parse(value, formatter) : DateTime.parse(value);
   }
 }

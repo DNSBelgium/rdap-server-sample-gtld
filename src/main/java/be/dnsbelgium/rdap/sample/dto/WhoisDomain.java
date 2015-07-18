@@ -13,7 +13,7 @@ public class WhoisDomain {
   public List<Contact> admin = new ArrayList<>();
   public List<Contact> tech = new ArrayList<>();
 
-  public List<String> nameservers =  new ArrayList<>();
+  public List<String> nameservers = new ArrayList<>();
 
   public DnsSec dnssec = new DnsSec();
 }

@@ -30,7 +30,7 @@ public class ParseLayout {
 
   public WhoisEntry getEntry(String key, WhoisKeyBlock previousRowBlock) {
     Map<WhoisKeyBlock, WhoisEntry> subMap = findSubMap(key);
-    if(subMap==null) {
+    if (subMap == null) {
       return null;
     }
 
@@ -47,7 +47,7 @@ public class ParseLayout {
       default:
         // Return the first one when no previous block defined.
         // This should not happen in any case!!
-        if(previousRowBlock==null) {
+        if (previousRowBlock == null) {
           entry = subMap.entrySet().iterator().next().getValue();
         } else {
           entry = subMap.get(previousRowBlock);
@@ -59,14 +59,15 @@ public class ParseLayout {
   /**
    * Find the submap for the given key. If we can't find a submap for the key
    * and the key ends with an index -&gt; try to find the key as an indexed field
-   * @param key  The field key
-   * @return  The map of entries for the key
+   *
+   * @param key The field key
+   * @return The map of entries for the key
    */
   protected Map<WhoisKeyBlock, WhoisEntry> findSubMap(String key) {
     Map<WhoisKeyBlock, WhoisEntry> subMap = layout.get(key);
-    if(subMap==null) {
+    if (subMap == null) {
       Matcher matcher = INDEXED_FIELD_PATTERN.matcher(key);
-      if(matcher.matches()) {
+      if (matcher.matches()) {
         subMap = layout.get(matcher.group(1) + "{i}");
       }
     }
@@ -81,7 +82,7 @@ public class ParseLayout {
 
   protected Map<WhoisKeyBlock, WhoisEntry> getSubMap(String key) {
     Map<WhoisKeyBlock, WhoisEntry> subMap = layout.get(key);
-    if(subMap==null) {
+    if (subMap == null) {
       subMap = new HashMap<WhoisKeyBlock, WhoisEntry>();
       layout.put(key, subMap);
     }

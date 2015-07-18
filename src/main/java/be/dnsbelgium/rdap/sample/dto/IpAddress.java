@@ -14,21 +14,11 @@ public class IpAddress {
   public String ip6;
 
   public IpAddress(String ip, boolean ipv6) {
-    if(ipv6) {
+    if (ipv6) {
       ip6 = ip;
     } else {
       ip4 = ip;
     }
-  }
-
-//  @JsonIgnore
-  public boolean isIpv4() {
-    return ip4 != null;
-  }
-
-//  @JsonIgnore
-  public boolean isIpv6() {
-    return ip6 != null;
   }
 
   public static IpAddress parse(String value) {
@@ -41,5 +31,15 @@ public class IpAddress {
       logger.info("Unable to parse IP address '{}'", value, e);
       return null;
     }
+  }
+
+  //  @JsonIgnore
+  public boolean isIpv4() {
+    return ip4 != null;
+  }
+
+  //  @JsonIgnore
+  public boolean isIpv6() {
+    return ip6 != null;
   }
 }

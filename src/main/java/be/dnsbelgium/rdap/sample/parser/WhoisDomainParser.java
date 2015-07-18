@@ -9,6 +9,7 @@ import be.dnsbelgium.rdap.sample.parser.fieldparser.EnumFieldParser;
 public class WhoisDomainParser extends AbstractWhoisParser<WhoisDomain> {
 
   private static ParseLayout parseLayout = new ParseLayout();
+
   static {
     parseLayout.addEntry(WhoisKeyBlock.DOMAIN, true, "Domain ID", "domain.id", false);
     parseLayout.addEntry(WhoisKeyBlock.DOMAIN, "Domain Name", "domain.name", false);
@@ -87,8 +88,9 @@ public class WhoisDomainParser extends AbstractWhoisParser<WhoisDomain> {
   @Override
   protected void doAfterParsing(WhoisDomain instance, String data) {
     // TODO: set the u-label for the domain name
-    if(instance.domain.uLabel == null) {
+    if (instance.domain.uLabel == null) {
       instance.domain.uLabel = instance.domain.name;
     }
   }
+
 }
