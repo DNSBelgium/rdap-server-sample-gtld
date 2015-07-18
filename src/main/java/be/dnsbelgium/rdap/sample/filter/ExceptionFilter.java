@@ -1,4 +1,4 @@
-package at.nic.rdap.sample;
+package be.dnsbelgium.rdap.sample.filter;
 
 import be.dnsbelgium.rdap.Controllers;
 import be.dnsbelgium.rdap.spring.security.RDAPErrorException;

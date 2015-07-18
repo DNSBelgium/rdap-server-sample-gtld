@@ -1,12 +1,12 @@
 package be.dnsbelgium.rdap.sample.service;
 
-import at.nic.rdap.sample.InternalServerError;
-import at.nic.rdap.sample.QuotaReachedError;
 import be.dnsbelgium.core.DomainName;
 import be.dnsbelgium.core.TelephoneNumber;
 import be.dnsbelgium.rdap.core.Domain;
 import be.dnsbelgium.rdap.core.*;
 import be.dnsbelgium.rdap.sample.dto.*;
+import be.dnsbelgium.rdap.sample.error.InternalServerError;
+import be.dnsbelgium.rdap.sample.error.QuotaReachedError;
 import be.dnsbelgium.rdap.sample.parser.WhoisDomainParser;
 import be.dnsbelgium.rdap.sample.parser.WhoisHostListParser;
 import be.dnsbelgium.rdap.sample.parser.WhoisRegistrarListParser;
@@ -241,8 +241,6 @@ public class GtldWhoisService extends DefaultDomainService {
       throw new InternalServerError(e.getMessage());
     }
   }
-
-
 
 
 }

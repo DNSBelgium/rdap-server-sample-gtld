@@ -1,4 +1,4 @@
-package at.nic.rdap.sample;
+package be.dnsbelgium.rdap.sample.error;
 
 import be.dnsbelgium.rdap.core.HttpStatus;
 import be.dnsbelgium.rdap.core.RDAPError;

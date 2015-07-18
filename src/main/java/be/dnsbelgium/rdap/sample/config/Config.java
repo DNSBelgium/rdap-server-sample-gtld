@@ -1,4 +1,4 @@
-package at.nic.rdap.sample;
+package be.dnsbelgium.rdap.sample.config;
 
 import be.dnsbelgium.rdap.WebConfig;
 import be.dnsbelgium.rdap.sample.service.GtldWhoisService;
