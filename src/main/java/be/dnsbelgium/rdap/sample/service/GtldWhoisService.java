@@ -27,6 +27,7 @@ public class GtldWhoisService extends DefaultDomainService {
 
   public static final String NO_MATCH = "% No match";
   public static final String QUOTA_EXCEEDED = "% Quota exceeded";
+  public static final String DOMAIN_NOT_FOUND = "Domain not found";
 
   private Entity whoisContactEntity(be.dnsbelgium.rdap.sample.dto.Contact contact, Entity.Role role) {
     List<Entity.Role> roles = new ArrayList<>();
@@ -106,6 +107,9 @@ public class GtldWhoisService extends DefaultDomainService {
         throw new QuotaReachedError();
       }
       if (StringUtils.strip(whoisData).startsWith(NO_MATCH)) {
+        return null;
+      }
+      if (StringUtils.strip(whoisData).startsWith(DOMAIN_NOT_FOUND)) {
         return null;
       }
       WhoisDomainParser parser = new WhoisDomainParser();
