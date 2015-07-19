@@ -35,7 +35,7 @@ For Tomcat: if you deploy this a regular webapp, your queries can be found on
 
 otherwise, if you deploy as your ROOT webapp, they will be on
 
-  http://<machine>:<tomcatport>/rdap/domain/nic.brussels
+    http://<machine>:<tomcatport>/rdap/domain/nic.brussels
 
 ## Using the DNS Belgium RDAP client
 
