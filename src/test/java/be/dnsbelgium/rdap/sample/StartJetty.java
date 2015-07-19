@@ -1,3 +1,5 @@
+package be.dnsbelgium.rdap.sample;
+
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.bio.SocketConnector;
