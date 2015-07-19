@@ -96,9 +96,10 @@ public class GtldWhoisService extends DefaultDomainService {
     try {
       String tld = domainName.getTLDLabel().getStringValue();
       WhoisClient whoisClient = new WhoisClient();
-      whoisClient.connect("whois.nic." + tld, 43);
       whoisClient.setDefaultTimeout(10000);
       whoisClient.setConnectTimeout(5000);
+      whoisClient.connect("whois.nic." + tld, 43);
+      whoisClient.setSoTimeout(10000);
       String query = domainName.getStringValue();
       String whoisData = whoisClient.query(query);
       if (StringUtils.strip(whoisData).startsWith(QUOTA_EXCEEDED)) {
@@ -183,9 +184,10 @@ public class GtldWhoisService extends DefaultDomainService {
   private WhoisRegistrar getRegistrar(String tld, String registrar) throws RDAPError {
     try {
       WhoisClient whoisClient = new WhoisClient();
-      whoisClient.connect("whois.nic." + tld, 43);
       whoisClient.setDefaultTimeout(10000);
       whoisClient.setConnectTimeout(5000);
+      whoisClient.connect("whois.nic." + tld, 43);
+      whoisClient.setSoTimeout(10000);
       String query = "registrar " + registrar;
       String whoisData = whoisClient.query(query);
       if (StringUtils.strip(whoisData).startsWith(QUOTA_EXCEEDED)) {
@@ -214,9 +216,10 @@ public class GtldWhoisService extends DefaultDomainService {
   private WhoisHost getHost(String tld, String host) throws RDAPError {
     try {
       WhoisClient whoisClient = new WhoisClient();
-      whoisClient.connect("whois.nic." + tld, 43);
       whoisClient.setDefaultTimeout(10000);
       whoisClient.setConnectTimeout(5000);
+      whoisClient.connect("whois.nic." + tld, 43);
+      whoisClient.setSoTimeout(10000);
       String query = "nameserver " + host;
       String whoisData = whoisClient.query(query);
       if (StringUtils.strip(whoisData).startsWith(QUOTA_EXCEEDED)) {
