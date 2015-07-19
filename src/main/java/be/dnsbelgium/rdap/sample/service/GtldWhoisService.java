@@ -138,11 +138,13 @@ public class GtldWhoisService extends DefaultDomainService {
       List<InetAddress> inetAddresses = new ArrayList<>();
       if (tld.equals(nameServer.getTLDLabel().getStringValue())) {
         WhoisHost whoisHost = getHost(tld, nameserverName);
-        for (IpAddress ipAddress : whoisHost.ipAddressList) {
-          try {
-            inetAddresses.add(InetAddress.getByName(ipAddress.isIpv4() ? ipAddress.ip4 : ipAddress.ip6));
-          } catch (UnknownHostException e) {
-            System.out.println("e = " + e);
+        if (whoisHost != null) {
+          for (IpAddress ipAddress : whoisHost.ipAddressList) {
+            try {
+              inetAddresses.add(InetAddress.getByName(ipAddress.isIpv4() ? ipAddress.ip4 : ipAddress.ip6));
+            } catch (UnknownHostException e) {
+              System.out.println("e = " + e);
+            }
           }
         }
       }
