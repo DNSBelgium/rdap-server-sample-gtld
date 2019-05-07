@@ -12,6 +12,9 @@ gradleBuild/
 .gradle/
 build/
 
+# maven
+target/
+
 # swap files
 *.swp
 
