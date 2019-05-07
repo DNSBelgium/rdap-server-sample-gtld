@@ -2,8 +2,8 @@ package be.dnsbelgium.rdap.sample.filter;
 
 import be.dnsbelgium.rdap.Controllers;
 import be.dnsbelgium.rdap.spring.security.RDAPErrorException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +20,7 @@ public class ExceptionFilter implements Filter {
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
     mapper = new ObjectMapper();
-    mapper.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
+    mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
   }
 
   @Override
