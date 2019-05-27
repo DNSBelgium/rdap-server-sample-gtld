@@ -1,9 +1,9 @@
 package be.dnsbelgium.rdap.sample;
 
-import org.mortbay.jetty.Connector;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.bio.SocketConnector;
-import org.mortbay.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,11 +18,11 @@ public class StartJetty {
     startWebApp();
   }
 
-  public static void startWebApp() {
+  private static void startWebApp() {
     Server server = new Server();
-    SocketConnector connector = new SocketConnector();
+    ServerConnector connector = new ServerConnector(server);
 
-    connector.setMaxIdleTime(1000 * 60 * 60);
+    connector.setIdleTimeout(1000 * 60 * 60);
     connector.setSoLingerTime(-1);
     connector.setPort(3030);
     server.setConnectors(new Connector[]{connector});
@@ -36,7 +36,7 @@ public class StartJetty {
 
     webAppContext.setWar(path);
 
-    server.addHandler(webAppContext);
+    server.setHandler(webAppContext);
 
     try {
       String msg = "http://localhost:3030/";
@@ -66,7 +66,7 @@ public class StartJetty {
     System.out.println(msg);
   }
 
-  public static String findWarPath(String warPath) {
+  private static String findWarPath(String warPath) {
     if (warPath == null) {
       return null;
     }

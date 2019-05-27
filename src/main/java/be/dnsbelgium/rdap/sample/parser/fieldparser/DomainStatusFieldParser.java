@@ -1,7 +1,7 @@
 package be.dnsbelgium.rdap.sample.parser.fieldparser;
 
 import be.dnsbelgium.rdap.sample.dto.DomainStatus;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class DomainStatusFieldParser implements FieldParser<DomainStatus> {
   @Override

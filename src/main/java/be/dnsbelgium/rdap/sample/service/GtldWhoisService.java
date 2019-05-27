@@ -57,7 +57,7 @@ public class GtldWhoisService extends DefaultDomainService {
         System.out.println("iae = " + iae);
       }
     }
-    return new Entity(null, null, null, null, Entity.OBJECT_CLASS_NAME, null, null, null, contact.id, builder.build(), roles, null, null);
+    return new Entity(null, null, null, null, Entity.OBJECT_CLASS_NAME, null, null, null, contact.id, builder.build(), roles, null, null, null);
   }
 
   private Entity whoisRegistrarEntity(WhoisRegistrar registrar, Entity.Role role) {
@@ -89,7 +89,7 @@ public class GtldWhoisService extends DefaultDomainService {
       }
     }
     //reghandle not found in response data
-    return new Entity(null, null, null, null, Entity.OBJECT_CLASS_NAME, null, null, null, registrar.ianaId, builder.build(), roles, null, null);
+    return new Entity(null, null, null, null, Entity.OBJECT_CLASS_NAME, null, null, null, registrar.ianaId, builder.build(), roles, null, null, null);
   }
 
   @Override
