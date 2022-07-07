@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <jetty.version>9.4.17.v20190418</jetty.version>
+    <jetty.version>10.0.10</jetty.version>
     <spring.version>5.1.6.RELEASE</spring.version>
   </properties>
 
